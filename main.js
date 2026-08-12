@@ -1,21 +1,3 @@
-// ═══ ALTURA REAL DEL HERO EN PÍXELES (solo desktop — evita ambigüedad de 100vh) ═══
-// En mobile/tablet el hero NO se fuerza a una altura: mide lo que su contenido necesita.
-function setHeroHeight() {
-  const hero = document.querySelector('.hero');
-  const text = document.querySelector('.hero-text');
-  if (!hero) return;
-  if (window.innerWidth > 1024) {
-    const h = window.innerHeight + 'px';
-    hero.style.height = h;
-    if (text) text.style.height = h;
-  } else {
-    hero.style.height = '';
-    if (text) text.style.height = '';
-  }
-}
-setHeroHeight();
-window.addEventListener('resize', setHeroHeight);
-
 // ═══ MENÚ MOBILE ═══
 const burger = document.getElementById('burger');
 const mnav = document.getElementById('mnav');
@@ -47,8 +29,13 @@ window.addEventListener('scroll', () => {
     topFloat.classList.remove('show');
   }
 
-  if (window.scrollY > 60) siteHeader.classList.add('scrolled');
-  else siteHeader.classList.remove('scrolled');
+  if (window.scrollY > 60) {
+    siteHeader.classList.add('scrolled');
+    document.body.classList.add('scrolled');
+  } else {
+    siteHeader.classList.remove('scrolled');
+    document.body.classList.remove('scrolled');
+  }
 });
 
 topFloat.addEventListener('click', () => {
