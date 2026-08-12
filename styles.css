@@ -331,7 +331,7 @@ header.scrolled .h-cta:hover { background: var(--cream); border-color: var(--cre
 
 .testi-track {
   order: 1; flex: 1 1 0%; min-width: 0;
-  display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  display: flex; overflow-x: hidden; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth;
   background: #fff; box-shadow: 0 0 30px rgba(36,30,28,.24);
   scrollbar-width: none; touch-action: pan-y;
 }
@@ -348,13 +348,11 @@ header.scrolled .h-cta:hover { background: var(--cream); border-color: var(--cre
   pointer-events: none; user-select: none;
 }
 .testi-stars { position: relative; z-index: 1; display: flex; justify-content: center; gap: 4px; margin-top: 42px; margin-bottom: 16px; color: var(--vino); font-size: .85rem; }
-.testimonial-card.featured .testi-stars { font-size: 1rem; }
 .testi-text {
   position: relative; z-index: 1; max-width: 620px; margin: 0 auto 28px;
   font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1.05rem; line-height: 1.8;
   color: var(--ink-soft);
 }
-.testimonial-card.featured .testi-text { font-size: 1.2rem; max-width: 680px; }
 .testi-author { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 14px; }
 .testi-avatar {
   flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
@@ -543,7 +541,10 @@ header.scrolled .h-cta:hover { background: var(--cream); border-color: var(--cre
   .testi-next { order: 3; }
   .testimonial-card, .testimonial-card.featured { padding: 32px 24px; }
   .testi-quote { font-size: 4rem; top: 20px; }
-  .testi-stars { margin-top: 34px; }
+  .testi-stars { margin-top: 34px; font-size: .78rem; }
+  .testi-text { font-size: .92rem; line-height: 1.7; }
+  .testi-name { font-size: .86rem; }
+  .testi-source { font-size: .75rem; }
 
   .faq-q span:first-child { font-size: 1.08rem; }
 

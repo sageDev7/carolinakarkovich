@@ -80,7 +80,16 @@ function restartTestiAuto() {
   startTestiAuto();
 }
 if (testiTrack) {
-  startTestiAuto();
+  const testiSection = document.getElementById('testimonios');
+  if (testiSection) {
+    const testiObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) startTestiAuto();
+        else stopTestiAuto();
+      });
+    }, { threshold: 0.4 });
+    testiObserver.observe(testiSection);
+  }
   testiTrack.addEventListener('mouseenter', stopTestiAuto);
   testiTrack.addEventListener('mouseleave', startTestiAuto);
   testiTrack.addEventListener('touchstart', stopTestiAuto, { passive: true });
