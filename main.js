@@ -49,8 +49,7 @@ let testiAutoTimer = null;
 function testiScroll(dir) {
   if (!testiTrack) return;
   const card = testiTrack.querySelector('.testimonial-card');
-  const gap = 24;
-  const amount = (card ? card.offsetWidth : 320) + gap;
+  const amount = card ? card.offsetWidth : 320;
   testiTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
   restartTestiAuto();
 }
@@ -66,8 +65,7 @@ function testiAutoAdvance() {
 }
 function testiScrollAuto(dir) {
   const card = testiTrack.querySelector('.testimonial-card');
-  const gap = 24;
-  const amount = (card ? card.offsetWidth : 320) + gap;
+  const amount = card ? card.offsetWidth : 320;
   testiTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
 }
 function startTestiAuto() {
