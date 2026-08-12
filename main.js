@@ -42,8 +42,54 @@ topFloat.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// ═══ TESTIMONIOS CARRUSEL ═══
+const testiTrack = document.getElementById('testiTrack');
+let testiAutoTimer = null;
+
+function testiScroll(dir) {
+  if (!testiTrack) return;
+  const card = testiTrack.querySelector('.testimonial-card');
+  const gap = 24;
+  const amount = (card ? card.offsetWidth : 320) + gap;
+  testiTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  restartTestiAuto();
+}
+
+function testiAutoAdvance() {
+  if (!testiTrack) return;
+  const maxScroll = testiTrack.scrollWidth - testiTrack.clientWidth;
+  if (testiTrack.scrollLeft >= maxScroll - 4) {
+    testiTrack.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    testiScrollAuto(1);
+  }
+}
+function testiScrollAuto(dir) {
+  const card = testiTrack.querySelector('.testimonial-card');
+  const gap = 24;
+  const amount = (card ? card.offsetWidth : 320) + gap;
+  testiTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
+}
+function startTestiAuto() {
+  if (!testiTrack) return;
+  testiAutoTimer = setInterval(testiAutoAdvance, 5000);
+}
+function stopTestiAuto() {
+  if (testiAutoTimer) clearInterval(testiAutoTimer);
+}
+function restartTestiAuto() {
+  stopTestiAuto();
+  startTestiAuto();
+}
+if (testiTrack) {
+  startTestiAuto();
+  testiTrack.addEventListener('mouseenter', stopTestiAuto);
+  testiTrack.addEventListener('mouseleave', startTestiAuto);
+  testiTrack.addEventListener('touchstart', stopTestiAuto, { passive: true });
+}
+
 // ═══ REVEAL ON SCROLL ═══
-document.querySelectorAll('.stats-inner, .values-list').forEach(container => {
+document.querySelectorAll('.stats-inner, .values-list, .testi-track').forEach(container => {
   Array.from(container.children).forEach((el, i) => {
     if (el.classList.contains('reveal')) el.style.transitionDelay = (i * 70) + 'ms';
   });
